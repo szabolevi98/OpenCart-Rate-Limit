@@ -1,16 +1,25 @@
 <modification>
-    <name>Opencart Rate Limiter</name>
+    <name>Opencart Rate Limit</name>
     <code>rate_limit</code>
-    <version>1.0</version>
+    <version>1.1.0</version>
     <author>Szabó Levente</author>
     <link>https://levente.net</link>
-    <file path="system/config/catalog.php">
+    <file path="catalog/controller/startup/startup.php">
         <operation error="log">
             <search>
-                <![CDATA['startup/startup',]]>
+                <![CDATA[$this->registry->set('encryption', new Encryption());]]>
             </search>
             <add position="after">
-                <![CDATA[	'startup/rate_limit',]]>
+                <![CDATA[
+        if ($this->config->get("module_rate_limit_status")) {
+            $maxRequests = $this->config->get("module_rate_limit_max_request");
+            $interval = $this->config->get("module_rate_limit_interval");
+            $this->registry->set('rate_limit', new RateLimit($maxRequests, $interval));
+            if ($this->rate_limit->checkLimited()) {
+                http_response_code(429);
+                exit($this->config->get("module_rate_limit_message"));
+            }
+        }]]>
             </add>
         </operation>
     </file>

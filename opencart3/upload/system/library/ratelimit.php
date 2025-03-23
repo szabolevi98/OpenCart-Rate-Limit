@@ -1,6 +1,7 @@
 <?php
 /**
  * @package     Rate Limit
+ * @version     v1.1.0
  * @author      Szabó Levente
  * @link        https://levente.net
  */
