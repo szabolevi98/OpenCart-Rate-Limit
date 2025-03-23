@@ -2,9 +2,9 @@
 
 ![Screenshot](img/rate_limit_large.png?raw=true "OpenCart Rate Limit")
 
-You can set **how many requests** a user can make **in a given interval** before getting rate limited.
-It can be **useful against bots**, but software protection will not protect you from extensive DDOS attacks.
-**OpenCart 3 & 4 supported.** Don't forget to **refresh modifications** if you are using OpenCart 3.
+You can set **how many requests** a user can make **in a given interval** before getting rate limited.  
+It can be **useful against bots**, but software protection will not protect you from extensive DDOS attacks.  
+**OpenCart 3 & 4 supported.** Don't forget to **refresh modifications** if you are using OpenCart 3.  
 
 - Install the extension via the provided rate_limit.ocmod.zip
 - Refresh the modifications (only needed for OpenCart 3)
