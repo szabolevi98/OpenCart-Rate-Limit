@@ -15,7 +15,7 @@ class RateLimit extends \Opencart\System\Engine\Controller {
         if ($this->config->get("module_rate_limit_status")) {
             $maxRequests = $this->config->get("module_rate_limit_max_request") ?? 75;
             $interval = $this->config->get("module_rate_limit_interval") ?? 300;
-            $this->registry->set('rate_limit', new \Opencart\System\Library\Extension\RateLimit\RateLimit($maxRequests, $interval));
+            $this->registry->set('rate_limit', new \Opencart\System\Library\Extension\RateLimit\RateLimit((int)$maxRequests, (int)$interval));
             if ($this->rate_limit->checkLimited()) {
                 http_response_code(429);
                 exit($this->config->get("module_rate_limit_message"));

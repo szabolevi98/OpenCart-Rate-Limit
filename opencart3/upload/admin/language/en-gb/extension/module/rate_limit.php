@@ -16,4 +16,4 @@ $_['entry_interval']     = 'Interval (second)';
 $_['entry_message']     = 'Message';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify account module!';
+$_['error_permission'] = 'Warning: You do not have permission to modify Rate Limit module!';
