@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Rate Limit
- * @version     v1.1.1
+ * @version     v1.2.0
  * @author      Szabó Levente
  * @link        https://levente.net
  */
@@ -26,11 +26,11 @@ class RateLimit {
     /**
      * @var int
      */
-    private int $cleanupChance = 100; // 1 in 100 chance to clean old files
+    private int $cleanupChance = 5;
     /**
      * @var int
      */
-    private int $cleanupThreshold = 60*60*24*7; // 7 day
+    private int $cleanupThreshold;
 
     /**
      * Constructor
@@ -41,6 +41,7 @@ class RateLimit {
     public function __construct(int $maxRequests, int $interval) {
         $this->maxRequests = $maxRequests;
         $this->interval = $interval;
+        $this->cleanupThreshold = $interval + 30;
         if (!is_dir($this->cachePath)) {
             mkdir($this->cachePath, 0755, true);
         }
@@ -52,7 +53,7 @@ class RateLimit {
     public function checkLimited(): bool
     {
         // Clean up old files
-        if (rand(1, $this->cleanupChance) === 1) {
+        if (rand(1, 100) <= $this->cleanupChance) {
             $this->cleanupOldFiles();
         }
 

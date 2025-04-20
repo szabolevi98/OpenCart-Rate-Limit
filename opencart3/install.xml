@@ -1,7 +1,7 @@
 <modification>
     <name>OpenCart Rate Limit</name>
     <code>rate_limit</code>
-    <version>1.1.1</version>
+    <version>1.2.0</version>
     <author>Szabó Levente</author>
     <link>https://levente.net</link>
     <file path="catalog/controller/startup/startup.php">
